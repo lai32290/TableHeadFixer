@@ -1,13 +1,18 @@
 jQuery.fn.extend({
 
-	fixHeader: function(param) {
+	tableHeadFixer: function(param) {
 		var self = {
 			param: {
-				fixHead: true
+				head: true,
+				foot: false,
+				left: 0,
+				right: 0
 			},
 
 			setParent: function() {
 				var parent = self.parent;
+
+
 
 				$(this).before(parent);
 				parent.append(this);
@@ -20,7 +25,13 @@ jQuery.fn.extend({
 
 				parent.scroll(function() {
 					var top = parent.scrollTop();
-					this.find("thead th").css("top", (top));
+					var left = parent.scrollLeft();
+
+					if(self.param.head)
+						this.find("thead th").css("top", top);
+
+					if(self.param.left > 0)
+						self.param.leftColumns.css("left", left);
 				}.bind(this));
 			}.bind(this),
 			
@@ -29,27 +40,81 @@ jQuery.fn.extend({
 				var tr = thead.find("tr");
 				var th = thead.find("th");
 
+				self.setBackground(th);
 				th.css({
 					'position' : 'relative',
-					'background' : tr.css("background")
 				});
-			}.bind(this)
+			}.bind(this),
+
+			fixLeft: function() {
+				var table = $(this);
+
+				var fixColumn = self.param.left;
+
+				self.param.leftColumns = $();
+
+				for(var i = 1; i <= fixColumn; i++) {
+					self.param.leftColumns = self.param.leftColumns
+						.add(table.find("tr td:nth-child(" + i + "), tr th:nth-child(" + i + ")"));
+				}
+
+				var column = self.param.leftColumns;
+
+				column.each(function(k, cell) {
+					var cell = $(cell);
+
+					self.setBackground(cell);
+					cell.css({
+						'position' : 'relative'
+					});
+				});
+			}.bind(this),
+
+			setCorner: function() {
+
+			}.bind(this),
+
+			setBackground: function(elements) {
+				elements.each(function(k, element) {
+					var element = $(element);
+					var parent = $(element).parent();
+
+					var elementBackground = element.css("background-color");
+					elementBackground = (elementBackground == "transparent" || elementBackground == "rgba(0, 0, 0, 0)") ? null : elementBackground;
+
+					var parentBackground = parent.css("background-color");
+					parentBackground = (parentBackground == "transparent" || parentBackground == "rgba(0, 0, 0, 0)") ? null : parentBackground;
+
+					var background = parentBackground ? parentBackground : "white";
+					background = elementBackground ? elementBackground : background;
+
+					element.css("background-color", background);
+				});
+			}.bind(this),
 		};
 
 
 		// ------------------------------------------------
 
-		if(param !== undefined)
-			self.param = param;
+		if(param === undefined)
+			param = {};
+
+		if(typeof param == "object") {
+			for(var k in param) {
+				var attr = param[k];
+				self.param[k] = attr;
+			}
+		}
 
 		self.parent = $("<div></div>");
 		self.setParent();
 
-		if(self.param.fixHead == true)
+		if(self.param.head == true)
 			self.fixHead();
 
-		console.log(this.position().top);
+		if(self.param.left > 0)
+			self.fixLeft();
+
+		self.setCorner();
 	}
 });
-
-$(".fixHead").fixHeader(); 

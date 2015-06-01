@@ -24,14 +24,24 @@ jQuery.fn.extend({
 					});
 
 				parent.scroll(function() {
+					var scrollWidth = parent[0].scrollWidth;
+					var clientWidth = parent[0].clientWidth;
+					var scrollHeight = parent[0].scrollHeight;
+					var clientHeight = parent[0].clientHeight;
 					var top = parent.scrollTop();
 					var left = parent.scrollLeft();
 
 					if(self.param.head)
 						this.find("thead tr > *").css("top", top);
 
+					if(self.param.foot)
+						this.find("tfoot tr > *").css("bottom", scrollHeight - clientHeight - top);
+
 					if(self.param.left > 0)
 						self.param.leftColumns.css("left", left);
+
+					if(self.param.right > 0)
+						self.param.rightColumns.css("right", scrollWidth - clientWidth - left);
 				}.bind(this));
 			}.bind(this),
 			
@@ -39,6 +49,17 @@ jQuery.fn.extend({
 				var thead = $(this).find("thead");
 				var tr = thead.find("tr");
 				var cells = thead.find("tr > *");
+
+				self.setBackground(cells);
+				cells.css({
+					'position' : 'relative'
+				});
+			}.bind(this),
+
+			fixFoot: function() {
+				var tfoot = $(this).find("tfoot");
+				var tr = tfoot.find("tr");
+				var cells = tfoot.find("tr > *");
 
 				self.setBackground(cells);
 				cells.css({
@@ -55,7 +76,7 @@ jQuery.fn.extend({
 
 				for(var i = 1; i <= fixColumn; i++) {
 					self.param.leftColumns = self.param.leftColumns
-						.add(table.find("tr td:nth-child(" + i + "), tr th:nth-child(" + i + ")"));
+						.add(table.find("tr > *:nth-child(" + i + ")"));
 				}
 
 				var column = self.param.leftColumns;
@@ -68,6 +89,31 @@ jQuery.fn.extend({
 						'position' : 'relative'
 					});
 				});
+			}.bind(this),
+
+			fixRight: function() {
+				var table = $(this);
+
+				var fixColumn = self.param.right;
+
+				self.param.rightColumns = $();
+
+				for(var i = 1; i <= fixColumn; i++) {
+					self.param.rightColumns = self.param.rightColumns
+						.add(table.find("tr > *:nth-last-child(" + i + ")"));
+				}
+
+				var column = self.param.rightColumns;
+
+				column.each(function(k, cell) {
+					var cell = $(cell);
+
+					self.setBackground(cell);
+					cell.css({
+						'position' : 'relative'
+					});
+				});
+
 			}.bind(this),
 
 			setCorner: function() {
@@ -124,9 +170,21 @@ jQuery.fn.extend({
 		if(self.param.head == true)
 			self.fixHead();
 
+		if(self.param.foot == true)
+			self.fixFoot();
+
 		if(self.param.left > 0)
 			self.fixLeft();
 
+		if(self.param.right > 0)
+			self.fixRight();
+
 		self.setCorner();
+
+		this.parent().trigger("scroll");
+
+		$(window).resize(function() {
+			this.parent().trigger("scroll");
+		}.bind(this));
 	}
 });

@@ -12,7 +12,7 @@
 			}
 
 			#fixTable {
-				width: 100%;
+				width: 200%;
 			}
 			th {
 				width: 200px;
@@ -21,13 +21,13 @@
 
 		<script>
 			$(document).ready(function() {
-				$("#fixTable").tableHeadFixer({'foot' : true, 'head' : false}); 
+				$("#fixTable").tableHeadFixer({"head" : false, "right" : 1}); 
 			});
 		</script>
 	</head>
 
 	<body>
-		<h2>TableHeadFixer Fix Footer</h2>
+		<h2>TableHeadFixer Fix Left Column</h2>
 
 		<div id="parent">
 			<table id="fixTable">
@@ -179,17 +179,6 @@
 						<td>550.00</td>
 					</tr>
 				</tbody>
-				<tfoot>
-					<tr>
-						<th>1000.00</th>
-						<th>1000.00</th>
-						<th>1000.00</th>
-						<th>1000.00</th>
-						<th>1000.00</th>
-						<th>1000.00</th>
-						<th>5000.00</th>
-					</tr>
-				</tfoot>
 			</table>
 		</div>
 	</body>

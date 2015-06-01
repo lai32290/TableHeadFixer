@@ -28,7 +28,7 @@ jQuery.fn.extend({
 					var left = parent.scrollLeft();
 
 					if(self.param.head)
-						this.find("thead th").css("top", top);
+						this.find("thead tr > *").css("top", top);
 
 					if(self.param.left > 0)
 						self.param.leftColumns.css("left", left);
@@ -38,11 +38,11 @@ jQuery.fn.extend({
 			fixHead: function() {
 				var thead = $(this).find("thead");
 				var tr = thead.find("tr");
-				var th = thead.find("th");
+				var cells = thead.find("tr > *");
 
-				self.setBackground(th);
-				th.css({
-					'position' : 'relative',
+				self.setBackground(cells);
+				cells.css({
+					'position' : 'relative'
 				});
 			}.bind(this),
 
@@ -71,7 +71,19 @@ jQuery.fn.extend({
 			}.bind(this),
 
 			setCorner: function() {
+				if(self.param.head) {
+					if(self.param.left > 0) {
+						var thead = $(this).find("thead");
+						var cells = $();
 
+						for(var i = 1; i <= self.param.left; i++)
+							cells = cells.add(thead.find("tr > *:nth-child(" + i + ")"));
+						
+						cells.css({
+							'z-index' : '999'
+						});
+					}
+				}
 			}.bind(this),
 
 			setBackground: function(elements) {

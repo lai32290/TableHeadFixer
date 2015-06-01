@@ -1,21 +1,15 @@
 <html>
 	<head>
-		<script src="/assets/jquery-2.1.3.js"></script>
+		<script src="../assets/jquery-2.1.3.js"></script>
 		<script src="../helloFixHeader.js"></script>
+		<link rel="stylesheet" href="/assets/bootstrap-3.3.2/css/bootstrap.css">
 		<style>
 			#parent {
-				height: 200px;
+				height: 300px;
 			}
-
-			#fixTable thead tr {
-				background: #C0C0C0;
-			}
-
+			
 			#fixTable {
-				width: 100%;
-			}
-			th {
-				width: 200px;
+				width: 1800px !important;
 			}
 		</style>
 
@@ -27,10 +21,10 @@
 	</head>
 
 	<body>
-		<h2>TableHeadFixer Fix Left Column</h2>
+		<h2>TableHeadFixer Fix Head Multiple Row</h2>
 
 		<div id="parent">
-			<table id="fixTable">
+			<table id="fixTable" class="table">
 				<thead>
 					<tr>
 						<th>Ano</th>

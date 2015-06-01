@@ -15,13 +15,13 @@
 
 		<script>
 			$(document).ready(function() {
-				$("#fixTable").tableHeadFixer({"head" : false, "left" : 2}); 
+				$("#fixTable").tableHeadFixer({'right' : 1, 'foot' : true, 'head' : false}); 
 			});
 		</script>
 	</head>
 
 	<body>
-		<h2>TableHeadFixer Fix Left Multiple Column</h2>
+		<h2>TableHeadFixer Fix Footer and Right</h2>
 
 		<div id="parent">
 			<table id="fixTable" class="table">
@@ -173,6 +173,17 @@
 						<td>550.00</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>1000.00</th>
+						<th>1000.00</th>
+						<th>1000.00</th>
+						<th>1000.00</th>
+						<th>1000.00</th>
+						<th>1000.00</th>
+						<th>5000.00</th>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</body>

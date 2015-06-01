@@ -129,6 +129,44 @@ jQuery.fn.extend({
 							'z-index' : '999'
 						});
 					}
+
+					if(self.param.right > 0) {
+						var thead = $(this).find("thead");
+						var cells = $();
+
+						for(var i = 1; i <= self.param.right; i++)
+							cells = cells.add(thead.find("tr > *:nth-last-child(" + i + ")"));
+						
+						cells.css({
+							'z-index' : '999'
+						});
+					}
+				}
+
+				if(self.param.foot) {
+					if(self.param.left > 0) {
+						var tfoot = $(this).find("tfoot");
+						var cells = $();
+
+						for(var i = 1; i <= self.param.left; i++)
+							cells = cells.add(tfoot.find("tr > *:nth-child(" + i + ")"));
+						
+						cells.css({
+							'z-index' : '999'
+						});
+					}
+
+					if(self.param.right > 0) {
+						var tfoot = $(this).find("tfoot");
+						var cells = $();
+
+						for(var i = 1; i <= self.param.right; i++)
+							cells = cells.add(tfoot.find("tr > *:nth-last-child(" + i + ")"));
+						
+						cells.css({
+							'z-index' : '999'
+						});
+					}
 				}
 			}.bind(this),
 

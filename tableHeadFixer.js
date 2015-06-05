@@ -42,21 +42,13 @@
 
 
 		function setParent() {
-			var container = $(settings.table).parent();
-			var parent = $(settings.parent);
+			var parent = $(settings.table).parent();
 			var table = $(settings.table);
 
-			table.before(parent);
 			parent.append(table);
 			parent
 				.css({
-					'width' : '100%',
-					'height' : container.css("height"),
-					'overflow' : 'scroll',
-					'max-height' : container.css("max-height"),
-					'min-height' : container.css("min-height"),
-					'max-width' : container.css('max-width'),
-					'min-width' : container.css('min-width')
+					'overflow' : 'scroll'
 				});
 
 			parent.scroll(function() {

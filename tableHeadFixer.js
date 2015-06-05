@@ -110,10 +110,21 @@
 
 			settings.leftColumns = $();
 
-			for(var i = 1; i <= fixColumn; i++) {
-				settings.leftColumns = settings.leftColumns
-					.add(table.find("tr > *:nth-child(" + i + ")"));
-			}
+			var tr = table.find("tr");
+			tr.each(function(k, row) {
+				var inc = 1;
+
+				for(var i = 1; i <= fixColumn; i = i + inc) {
+					var nth = inc > 1 ? i - 1 : i;
+
+					var cell = $(row).find("*:nth-child(" + nth + ")");
+					var colspan = cell.prop("colspan");
+
+					settings.leftColumns = settings.leftColumns.add(cell);
+					
+					inc = colspan;
+				}
+			});
 
 			var column = settings.leftColumns;
 
@@ -134,10 +145,21 @@
 
 			settings.rightColumns = $();
 
-			for(var i = 1; i <= fixColumn; i++) {
-				settings.rightColumns = settings.rightColumns
-					.add(table.find("tr > *:nth-last-child(" + i + ")"));
-			}
+			var tr = table.find("tr");
+			tr.each(function(k, row) {
+				var inc = 1;
+
+				for(var i = 1; i <= fixColumn; i = i + inc) {
+					var nth = inc > 1 ? i - 1 : i;
+
+					var cell = $(row).find("*:nth-last-child(" + nth + ")");
+					var colspan = cell.prop("colspan");
+
+					settings.rightColumns = settings.rightColumns.add(cell);
+					
+					inc = colspan;
+				}
+			});
 
 			var column = settings.rightColumns;
 

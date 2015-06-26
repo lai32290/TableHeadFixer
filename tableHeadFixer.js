@@ -45,7 +45,7 @@
 
 					tr.each(function(k, row) {
 						solverLeftColspan(row, function(cell) {
-							$(cell).css("z-index", "999");
+							$(cell).css("z-index", "100");
 						});
 					});
 				}
@@ -55,7 +55,7 @@
 
 					tr.each(function(k, row) {
 						solveRightColspan(row, function(cell) {
-							$(cell).css("z-index", "999");
+							$(cell).css("z-index", "100");
 						});
 					});
 				}
@@ -67,7 +67,7 @@
 
 					tr.each(function(k, row) {
 						solverLeftColspan(row, function(cell) {
-							$(cell).css("z-index", "999");
+							$(cell).css("z-index", "100");
 						});
 					});
 				}
@@ -77,7 +77,7 @@
 
 					tr.each(function(k, row) {
 						solveRightColspan(row, function(cell) {
-							$(cell).css("z-index", "999");
+							$(cell).css("z-index", "100");
 						});
 					});
 				}
@@ -230,7 +230,7 @@
 			for(var i = 1; i <= fixColumn; i = i + inc) {
 				var nth = inc > 1 ? i - 1 : i;
 
-				var cell = $(row).find("*:nth-child(" + nth + ")");
+				var cell = $(row).find("> *:nth-child(" + nth + ")");
 				var colspan = cell.prop("colspan");
 
 				action(cell);
@@ -246,7 +246,7 @@
 			for(var i = 1; i <= fixColumn; i = i + inc) {
 				var nth = inc > 1 ? i - 1 : i;
 
-				var cell = $(row).find("*:nth-last-child(" + nth + ")");
+				var cell = $(row).find("> *:nth-last-child(" + nth + ")");
 				var colspan = cell.prop("colspan");
 
 				action(cell);

@@ -1,4 +1,7 @@
 # TableHeadFixer
+
+[![Total Downloads](https://poser.pugx.org/phpunit/phpunit/downloads)](https://packagist.org/packages/phpunit/phpunit)
+
 ### About
 TableHeadFixer is a simple [jQuery](http:/jquery.com/ "jQuery") plugin for fixer HTML tables header, footer or columns.<br/>
 This plugin will only add elements events and css attributes necessary for fix tables header, footer or columns, you can customize styles of your table, this plugin will not influence style of table (width, height, background, font color, etc...)

@@ -57,4 +57,4 @@ For check more demos, please enter in the <b>examples</b> path.
 For fixer table header, footer or columns, is important table contained in a div, where which has set `height`, for fix header or footer, and set `width`, for fix left or right columns. This is very important, after all, for fix any row or columns, is necessary a area limited for show table.
 
 #### If fixed cells border is important for you
-If fixed cells border is important for you, is necessary set table cells css `table-collapse: separate`, because for css, when `table-collapse: collapse`, cells border is not possible separate and maintain even position of fixed cells
+If fixed cells border is important for you, is necessary set table cells css `border-collapse: separate`, because for css, when `border-collapse: collapse`, cells border is not possible separate and maintain even position of fixed cells

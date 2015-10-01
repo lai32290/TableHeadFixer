@@ -5,7 +5,8 @@
 			head: true,
 			foot: false,
 			left: 0,
-			right: 0
+			right: 0,
+			'z-index': 0
 		};
 
 		var settings = $.extend({}, defaults, param);
@@ -45,7 +46,7 @@
 
 					tr.each(function(k, row) {
 						solverLeftColspan(row, function(cell) {
-							$(cell).css("z-index", "100");
+							$(cell).css("z-index", settings['z-index']);
 						});
 					});
 				}
@@ -55,7 +56,7 @@
 
 					tr.each(function(k, row) {
 						solveRightColspan(row, function(cell) {
-							$(cell).css("z-index", "100");
+							$(cell).css("z-index", settings['z-index']);
 						});
 					});
 				}
@@ -67,7 +68,7 @@
 
 					tr.each(function(k, row) {
 						solverLeftColspan(row, function(cell) {
-							$(cell).css("z-index", "100");
+							$(cell).css("z-index", settings['z-index']);
 						});
 					});
 				}
@@ -77,7 +78,7 @@
 
 					tr.each(function(k, row) {
 						solveRightColspan(row, function(cell) {
-							$(cell).css("z-index", "100");
+							$(cell).css("z-index", settings['z-index']);
 						});
 					});
 				}

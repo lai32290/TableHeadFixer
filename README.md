@@ -39,6 +39,11 @@ By default, table header is fixed when <b>.tableHeadFixer()</b> function is call
 	$("#fixTable").tableHeadFixer({'foot' : true});
 ```
 
+#### Maybe you will need set fixer cells for resolve conflit between jQuery plugins
+```javascript
+	$("#fixTable").tableHeadFixer({'z-index' : 50});
+```
+
 #### Fix Multiple Rows in Header or Footer
 For fix multiple rows in header or footer, is only add new <code>tr</code> in the header or footer, all <code>tr</code> is will be fixed.
 
@@ -52,6 +57,7 @@ For check more demos, please enter in the <b>examples</b> path.
 | foot		| true/false 	|false		|
 | left		| 1,2,3,4,etc 	|0			|
 | right		| 1,2,3,4,etc 	|0			|
+| z-index   | 10,50,999,etc |0			|
 
 ### Note
 For fixer table header, footer or columns, is important table contained in a div, where which has set `height`, for fix header or footer, and set `width`, for fix left or right columns. This is very important, after all, for fix any row or columns, is necessary a area limited for show table.

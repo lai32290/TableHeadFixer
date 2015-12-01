@@ -37,6 +37,10 @@
 			});
 		});
 
+		/*
+		 This function solver z-index problem in corner cell where fix row and column at the same time,
+		 set corner cells z-index 1 more then other fixed cells
+		 */
 		function setCorner() {
 			var table = $(settings.table);
 
@@ -46,7 +50,7 @@
 
 					tr.each(function(k, row) {
 						solverLeftColspan(row, function(cell) {
-							$(cell).css("z-index", settings['z-index']);
+							$(cell).css("z-index", settings['z-index'] + 1);
 						});
 					});
 				}
@@ -56,7 +60,7 @@
 
 					tr.each(function(k, row) {
 						solveRightColspan(row, function(cell) {
-							$(cell).css("z-index", settings['z-index']);
+							$(cell).css("z-index", settings['z-index'] + 1);
 						});
 					});
 				}
@@ -85,7 +89,7 @@
 			}
 		}
 
-
+		// Set style of table parent
 		function setParent() {
 			var parent = $(settings.parent);
 			var table = $(settings.table);
@@ -93,7 +97,8 @@
 			parent.append(table);
 			parent
 				.css({
-					'overflow' : 'scroll'
+					'overflow-x' : 'auto',
+					'overflow-y' : 'auto'
 				});
 
 			parent.scroll(function() {
@@ -118,6 +123,7 @@
 			}.bind(table));
 		}
 
+		// Set table head fixed
 		function fixHead () {
 			var thead = $(settings.table).find("thead");
 			var tr = thead.find("tr");
@@ -129,6 +135,7 @@
 			});
 		}
 
+		// Set table foot fixed
 		function fixFoot () {
 			var tfoot = $(settings.table).find("tfoot");
 			var tr = tfoot.find("tr");
@@ -140,6 +147,7 @@
 			});
 		}
 
+		// Set table left column fixed
 		function fixLeft () {
 			var table = $(settings.table);
 
@@ -179,6 +187,7 @@
 			});
 		}
 
+		// Set table right column fixed
 		function fixRight () {
 			var table = $(settings.table);
 
@@ -206,6 +215,7 @@
 
 		}
 
+		// Set fixed cells backgrounds
 		function setBackground(elements) {
 			elements.each(function(k, element) {
 				var element = $(element);

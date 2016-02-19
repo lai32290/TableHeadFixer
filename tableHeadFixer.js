@@ -244,7 +244,7 @@
 				var cell = $(row).find("> *:nth-child(" + nth + ")");
 				var colspan = cell.prop("colspan");
 
-				if (cell.cellPos().left < fixColumn) {
+				if (cell.length > 0 && cell.cellPos().left < fixColumn) {
 					action(cell);
 				}
 

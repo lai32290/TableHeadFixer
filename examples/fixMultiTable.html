@@ -1,0 +1,159 @@
+<html>
+<head>
+    <script src="../assets/jquery-2.1.3.js"></script>
+    <script src="../tableHeadFixer.js"></script>
+    <link rel="stylesheet" href="../assets/bootstrap-3.3.2/css/bootstrap.css">
+    <style>
+        .parent {
+            height: 300px;
+            overflow: auto;
+        }
+
+        .fixTable {
+            width: 1800px !important;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function ()
+        {
+            $("#fixTable").tableHeadFixer({"head": false, "left": 1});
+            $("#fixTable2").tableHeadFixer({"head": false, "left": 1});
+        });
+    </script>
+</head>
+
+<body>
+<h2>TableHeadFixer Fix Left Column</h2>
+
+<div class="row">
+    <div class="col-sm-6 parent">
+        <table id="fixTable" class="table fixTable">
+            <thead>
+            <tr>
+                <th>Ano</th>
+                <th>Jan</th>
+                <th>Fev</th>
+                <th>Mar</th>
+                <th>Abr</th>
+                <th>Maio</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-6 parent">
+        <table id="fixTable2" class="table fixTable">
+            <thead>
+            <tr>
+                <th>Ano</th>
+                <th>Jan</th>
+                <th>Fev</th>
+                <th>Mar</th>
+                <th>Abr</th>
+                <th>Maio</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>110.00</td>
+                <td>550.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

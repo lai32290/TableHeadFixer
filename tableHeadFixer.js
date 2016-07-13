@@ -6,7 +6,10 @@
 			foot: false,
 			left: 0,
 			right: 0,
-			'z-index': 0
+			'z-index': 0,
+			class: 'table-head-fixer',
+			fixedClass: 'is-fixed',
+			setBackground: false
 		};
 
 		var settings = $.extend({}, defaults, param);
@@ -108,6 +111,7 @@
 				var clientHeight = parent[0].clientHeight;
 				var top = parent.scrollTop();
 				var left = parent.scrollLeft();
+				var right = scrollWidth - clientWidth - left;
 
 				if(settings.head)
 					this.find("thead tr > *").css("top", top);
@@ -115,11 +119,29 @@
 				if(settings.foot)
 					this.find("tfoot tr > *").css("bottom", scrollHeight - clientHeight - top);
 
-				if(settings.left > 0)
+				if(settings.left > 0) {
 					settings.leftColumns.css("left", left);
+					settings.leftColumns.addClass(settings.class);
+					settings.leftColumns.addClass(settings.class + "--left");
 
-				if(settings.right > 0)
-					settings.rightColumns.css("right", scrollWidth - clientWidth - left);
+					if(left > 0) {
+						settings.leftColumns.addClass(settings.fixedClass);
+					} else {
+						settings.leftColumns.removeClass(settings.fixedClass);
+					}
+				}
+
+				if(settings.right > 0) {
+					settings.rightColumns.css("right", right);
+					settings.rightColumns.addClass(settings.class);
+					settings.rightColumns.addClass(settings.class + "--right");
+
+					if(right > 0) {
+						settings.rightColumns.addClass(settings.fixedClass);
+					} else {
+						settings.rightColumns.removeClass(settings.fixedClass);
+					}
+				}
 			}.bind(table));
 		}
 
@@ -208,6 +230,7 @@
 				var cell = $(cell);
 
 				setBackground(cell);
+
 				cell.css({
 					'position' : 'relative'
 				});
@@ -217,21 +240,23 @@
 
 		// Set fixed cells backgrounds
 		function setBackground(elements) {
-			elements.each(function(k, element) {
-				var element = $(element);
-				var parent = $(element).parent();
 
-				var elementBackground = element.css("background-color");
-				elementBackground = (elementBackground == "transparent" || elementBackground == "rgba(0, 0, 0, 0)") ? null : elementBackground;
+			if(settings.setBackground)
+				elements.each(function(k, element) {
+					var element = $(element);
+					var parent = $(element).parent();
 
-				var parentBackground = parent.css("background-color");
-				parentBackground = (parentBackground == "transparent" || parentBackground == "rgba(0, 0, 0, 0)") ? null : parentBackground;
+					var elementBackground = element.css("background-color");
+					elementBackground = (elementBackground == "transparent" || elementBackground == "rgba(0, 0, 0, 0)") ? null : elementBackground;
 
-				var background = parentBackground ? parentBackground : "white";
-				background = elementBackground ? elementBackground : background;
+					var parentBackground = parent.css("background-color");
+					parentBackground = (parentBackground == "transparent" || parentBackground == "rgba(0, 0, 0, 0)") ? null : parentBackground;
 
-				element.css("background-color", background);
-			});
+					var background = parentBackground ? parentBackground : "white";
+					background = elementBackground ? elementBackground : background;
+
+					element.css("background-color", background);
+				});
 		}
 
 		function solverLeftColspan(row, action) {

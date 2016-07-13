@@ -7,7 +7,7 @@
 			left: 0,
 			right: 0,
 			'z-index': 0,
-			class: 'table-head-fixer',
+			baseClass: 'table-head-fixer',
 			fixedClass: 'is-fixed',
 			setBackground: false
 		};
@@ -121,8 +121,8 @@
 
 				if(settings.left > 0) {
 					settings.leftColumns.css("left", left);
-					settings.leftColumns.addClass(settings.class);
-					settings.leftColumns.addClass(settings.class + "--left");
+					settings.leftColumns.addClass(settings.baseClass);
+					settings.leftColumns.addClass(settings.baseClass + "--left");
 
 					if(left > 0) {
 						settings.leftColumns.addClass(settings.fixedClass);
@@ -133,8 +133,8 @@
 
 				if(settings.right > 0) {
 					settings.rightColumns.css("right", right);
-					settings.rightColumns.addClass(settings.class);
-					settings.rightColumns.addClass(settings.class + "--right");
+					settings.rightColumns.addClass(settings.baseClass);
+					settings.rightColumns.addClass(settings.baseClass + "--right");
 
 					if(right > 0) {
 						settings.rightColumns.addClass(settings.fixedClass);

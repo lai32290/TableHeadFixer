@@ -94,7 +94,6 @@
 			var parent = $(settings.parent);
 			var table = $(settings.table);
 
-			parent.append(table);
 			parent
 				.css({
 					'overflow-x' : 'auto',

@@ -1,0 +1,192 @@
+<html>
+<head>
+    <script src="../assets/jquery-2.1.3.js"></script>
+    <script src="../tableHeadFixer.js"></script>
+    <link rel="stylesheet" href="../assets/bootstrap-3.3.2/css/bootstrap.css">
+    <style>
+        #parent {
+            height: 300px;
+            width: 80%;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $("#fixTable").tableHeadFixer({left: 1, foot: true});
+
+            $("#toggleFix").click(function() {
+                $("#fixTable").tableHeadFixer('toggle');
+            })
+        });
+    </script>
+</head>
+
+<body>
+<h2>TableHeadFixer Fix Header</h2>
+<button id="toggleFix">Turn On/Off</button>
+
+<div id="parent">
+    <table id="fixTable" class="table" style="width: 2000px;">
+        <thead>
+        <tr>
+            <th>Ano</th>
+            <th>Jan</th>
+            <th>Fev</th>
+            <th>Mar</th>
+            <th>Abr</th>
+            <th>Maio</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2010</td>
+            <td>100.00</td>
+            <td>100.00</td>
+            <td>100.00</td>
+            <td>100.00</td>
+            <td>100.00</td>
+            <td>500.00</td>
+        </tr>
+        <tr>
+            <td>2011</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>110.00</td>
+            <td>550.00</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>1000.00</th>
+            <th>1000.00</th>
+            <th>1000.00</th>
+            <th>1000.00</th>
+            <th>1000.00</th>
+            <th>1000.00</th>
+            <th>5000.00</th>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

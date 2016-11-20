@@ -7,29 +7,30 @@
         });
 
         function table() {
-            if(typeof param === 'string') {
+            if (typeof param === 'string') {
                 switch (param) {
                     case 'toggle':
                         this.tableHeadFixer.status = !this.tableHeadFixer.status;
-                        if(!this.tableHeadFixer.status) {
-                            var cells = this.tableHeadFixer.fixedCells.headFooter.concat(this.tableHeadFixer.fixedCells.columns);
-                            resetCellsPosition(cells);
-
-                            this.tableHeadFixer.fixedCells.headFooter = [];
-                            this.tableHeadFixer.fixedCells.columns = [];
+                        if (!this.tableHeadFixer.status) {
+                            setOff.call(this);
                             return;
                         }
                         break;
                 }
             }
 
-            this.tableHeadFixer = {
-                status: true,
-                fixedCells: {
-                    headFooter: [],
-                    columns: []
-                }
-            };
+            if (!this.tableHeadFixer)
+                this.tableHeadFixer = {
+                    status: true,
+                    fixedCells: {
+                        head: [],
+                        foot: [],
+                        columns: []
+                    }
+                };
+
+            if (typeof param !== 'string')
+                this.tableHeadFixer.setting = $.extend({}, param);
             var fixedCells = this.tableHeadFixer.fixedCells;
 
             var defaults = {
@@ -40,7 +41,7 @@
                 'z-index': 0
             };
 
-            var settings = $.extend({}, defaults, param);
+            var settings = $.extend({}, defaults, this.tableHeadFixer.setting);
 
             settings.table = this;
             settings.parent = $(settings.table).parent();
@@ -140,10 +141,11 @@
                     var left = parent.scrollLeft();
 
                     if (settings.head)
-                        $(fixedCells.headFooter).css("top", top);
+                        $(fixedCells.head).css("top", top);
 
                     if (settings.foot)
-                        $(fixedCells.headFooter).css("bottom", scrollHeight - clientHeight - top);
+                        $(fixedCells.foot).css("bottom", scrollHeight - clientHeight - top);
+                    // table.find('tfoot tr > *').css("bottom", scrollHeight - clientHeight - top);
 
                     if (settings.left > 0)
                         $(fixedCells.columns).css("left", left);
@@ -159,7 +161,7 @@
                 var tr = thead.find("tr");
                 var cells = thead.find("tr > *");
 
-                fixedCells.headFooter = fixedCells.headFooter.concat(cells.toArray());
+                fixedCells.head = fixedCells.head.concat(cells.toArray());
                 setBackground(cells);
                 cells.css({
                     'position': 'relative'
@@ -172,8 +174,8 @@
                 var tr = tfoot.find("tr");
                 var cells = tfoot.find("tr > *");
 
-                fixedCells.headFooter = fixedCells.headFooter.concat(cells.toArray());
-                console.log(settings.table.tableHeadFixer.fixedCells.headFooter);
+                fixedCells.foot = fixedCells.foot.concat(cells.toArray());
+                console.log(settings.table.tableHeadFixer.fixedCells.foot);
                 setBackground(cells);
                 cells.css({
                     'position': 'relative'
@@ -304,6 +306,16 @@
 
             function resetCellsPosition(cells) {
                 $(cells).css({top: 0, left: 0});
+            }
+
+            function setOff() {
+                resetCellsPosition(this.tableHeadFixer.fixedCells.head);
+                resetCellsPosition(this.tableHeadFixer.fixedCells.foot);
+                resetCellsPosition(this.tableHeadFixer.fixedCells.columns);
+
+                this.tableHeadFixer.fixedCells.head = [];
+                this.tableHeadFixer.fixedCells.foot = [];
+                this.tableHeadFixer.fixedCells.columns = [];
             }
         }
 

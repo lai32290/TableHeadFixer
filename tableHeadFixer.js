@@ -23,17 +23,21 @@
                 settings.parent = $(settings.table).parent();
                 setParent();
 
-                if (settings.head == true)
-                    fixHead();
+                if (settings.head == true) {
+                  fixHead();
+                }
 
-                if (settings.foot == true)
-                    fixFoot();
+                if (settings.foot == true) {
+                  fixFoot();
+                }
 
-                if (settings.left > 0)
-                    fixLeft();
+                if (settings.left > 0) {
+                  fixLeft();
+                }
 
-                if (settings.right > 0)
-                    fixRight();
+                if (settings.right > 0) {
+                  fixRight();
+                }
 
                 setCorner();
 
@@ -201,12 +205,23 @@
                     var fixColumn = settings.right;
 
                     settings.rightColumns = $();
-
-                    var tr = table.find("tr");
-                    tr.each(function (k, row) {
-                        solveRightColspan(row, function (cell) {
-                            settings.rightColumns = settings.rightColumns.add(cell);
-                        });
+                    
+                    var tr_head = table.find('thead').find("tr");
+                    var tr_body = table.find('tbody').find("tr");
+                  	var fcell = null;
+                  	tr_head.each(function (k, row) {
+                    	solveRightColspanHead(row, function (cell) {
+                      		if (k === 0) {
+                        		fcell = cell;
+                      		}
+                      		settings.rightColumns = settings.rightColumns.add(fcell);
+                    	});
+                  	});
+  
+                    tr_body.each(function (k, row) {
+                      solveRightColspanBody(row, function (cell) {
+                        settings.rightColumns = settings.rightColumns.add(cell);
+                      });
                     });
 
                     var column = settings.rightColumns;
@@ -216,7 +231,8 @@
 
                         setBackground(cell);
                         cell.css({
-                            'position': 'relative'
+                            'position': 'relative',
+                            'z-index': '9999'
                         });
                     });
 
@@ -258,22 +274,35 @@
                         inc = colspan;
                     }
                 }
-
-                function solveRightColspan(row, action) {
+  
+              function solveRightColspanHead(row, action) {
+                var fixColumn = settings.right;
+                var inc       = 1;
+                for (var i = 1; i <= fixColumn; i = i + inc) {
+                  var nth = inc > 1 ? i - 1 : i;
+      
+                  var cell    = $(row).find("> *:nth-last-child(" + nth + ")");
+                  var colspan = cell.prop("colspan");
+      
+                  action(cell);
+      
+                  inc = colspan;
+                }
+              }
+              
+                function solveRightColspanBody(row, action) {
                     var fixColumn = settings.right;
                     var inc       = 1;
-
                     for (var i = 1; i <= fixColumn; i = i + inc) {
                         var nth = inc > 1 ? i - 1 : i;
 
                         var cell    = $(row).find("> *:nth-last-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
-
                         action(cell);
-
                         inc = colspan;
                     }
                 }
+                
             }
 
         }

@@ -68,10 +68,14 @@
 
                         if (settings.right > 0) {
                             var tr = table.find("thead tr");
-
-                            tr.each(function (k, row) {
-                                solveRightColspan(row, function (cell) {
-                                    $(cell).css("z-index", settings['z-index'] + 1);
+                          var fcell = null;
+  
+                          tr.each(function (k, row) {
+                                solveRightColspanHead(row, function (cell) {
+                                  if (k === 0) {
+                                    fcell = cell;
+                                  }
+                                    $(fcell).css("z-index", settings['z-index'] + 1);
                                 });
                             });
                         }
@@ -92,7 +96,7 @@
                             var tr = table.find("tfoot tr");
 
                             tr.each(function (k, row) {
-                                solveRightColspan(row, function (cell) {
+                                solveRightColspanBody(row, function (cell) {
                                     $(cell).css("z-index", settings['z-index']);
                                 });
                             });
@@ -231,8 +235,7 @@
 
                         setBackground(cell);
                         cell.css({
-                            'position': 'relative',
-                            'z-index': '9999'
+                            'position': 'relative'
                         });
                     });
 

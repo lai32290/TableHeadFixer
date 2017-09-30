@@ -66,7 +66,7 @@ For fixer table header, footer or columns, is important table contained in a div
 If fixed cells border is important for you, is necessary set table cells css `border-collapse: separate`, because for css, when `border-collapse: collapse`, cells border is not possible separate and maintain even position of fixed cells
 
 
-#### Update
+### Update
 
-##### Version 1.0.1
+#### Version 1.0.1
 * Fixing problems about `some function is not defined` issue on old Firefox.  

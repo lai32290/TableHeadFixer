@@ -3,6 +3,7 @@
 TableHeadFixer is a simple [jQuery](http:/jquery.com/ "jQuery") plugin for fixing HTML table header, footer and columns.<br/>
 This plugin will only add elements' events and css attributes necessary to fix table header, footer and columns. You can customize styles of your table, as this plugin will not influence any styles of your table (width, height, background, font color, etc...)
 
+
 ### Dependiences (Important!)
 - [jQuery](http:/jquery.com/ "jQuery")
 
@@ -67,6 +68,4 @@ If fixed cells' border is important for you, it is necessary to set table cells'
 
 
 ### Update
-
-#### Version 1.0.1
 * Fixed problems with `some function is not defined` issue in old Firefox.  

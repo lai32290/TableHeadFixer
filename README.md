@@ -1,19 +1,16 @@
 # TableHeadFixer
 ### About
-TableHeadFixer is a simple [jQuery](http:/jquery.com/ "jQuery") plugin for fixer HTML tables header, footer or columns.<br/>
-This plugin will only add elements events and css attributes necessary for fix tables header, footer or columns, you can customize styles of your table, this plugin will not influence style of table (width, height, background, font color, etc...)
+TableHeadFixer is a simple [jQuery](http:/jquery.com/ "jQuery") plugin for fixing HTML table header, footer and columns.<br/>
+This plugin will only add elements' events and css attributes necessary to fix table header, footer and columns. You can customize styles of your table, as this plugin will not influence any styles of your table (width, height, background, font color, etc...)
 
-### Main Support
-- Chrome
-- Firefox
 
-### Require (Important!)
+### Dependiences (Important!)
 - [jQuery](http:/jquery.com/ "jQuery")
 
 ### Get Starting
-For use <b>TableHeadFixer</b> plugin, is require include <b>jQuery</b> in your page.<br/>
-After included <b>jQuery</b> in your page, just include <b>TableHeadFixer</b> plugin and call <b>.tableHeadFixer([param])</b> function after page rendered.<br/>
-And table of fixed need has a <code>div</code>, where included all size style.
+Before you can use <b>TableHeadFixer</b> plugin, it is required to include <b>jQuery</b> on your website.<br/>
+To use <b>TableHeadFixer</b> just include the plugin and call <b>$(element).tableHeadFixer([param])</b> function after the page renders.<br/>
+The table must be wrapped with a <code>div</code> element with all size styles set.
 
 ### Example:
 #### Fix Table Header
@@ -23,7 +20,7 @@ And table of fixed need has a <code>div</code>, where included all size style.
 ```
 
 #### Fix First Left Column
-By default, table header is fixed when <b>.tableHeadFixer()</b> function is called, if you need fix only footer or columns, is necessary disable head fix by parameter.
+By default, the function <b>.tableHeadFixer()</b> fixes only table header. If you need to fix only footer or columns, it is necessary to disable header fix by parameter.
 ```javascript
 	$("#fixTable").tableHeadFixer({'left' : 1, 'head' : false});
 ```
@@ -43,34 +40,32 @@ By default, table header is fixed when <b>.tableHeadFixer()</b> function is call
 	$("#fixTable").tableHeadFixer({'foot' : true});
 ```
 
-#### Maybe you will need set fixer cells for resolve conflit between jQuery plugins
+#### If you need to set fixed cells z-index parameter to resolve conflits between jQuery plugins
 ```javascript
 	$("#fixTable").tableHeadFixer({'z-index' : 50});
 ```
 
 #### Fix Multiple Rows in Header or Footer
-For fix multiple rows in header or footer, is only add new <code>tr</code> in the header or footer, all <code>tr</code> is will be fixed.
+Fixing multiple rows in header or footer is as easy as adding new <code>tr</code> to either of them, all header's and footer's table rows will be fixed.
 
 #### More Demos
-For check more demos, please enter in the <b>examples</b> path.
+More demos are available inside <b>examples</b> directory.
 
 ### Parameters
-|attribute	| values		|default	|
+| attribute	| values		|default	|
 |-----------|---------------|-----------|
-| head    	| true/false 	|true		|
-| foot		| true/false 	|false		|
-| left		| 1,2,3,4,etc 	|0			|
-| right		| 1,2,3,4,etc 	|0			|
-| z-index   | 10,50,999,etc |0			|
+| head    	| true/false 	| true		|
+| foot		| true/false 	| false		|
+| left		| 1,2,3,4,etc 	| 0			|
+| right		| 1,2,3,4,etc 	| 0			|
+| z-index   | 10,50,999,etc | 0			|
 
 ### Note
-For fixer table header, footer or columns, is important table contained in a div, where which has set `height`, for fix header or footer, and set `width`, for fix left or right columns. This is very important, after all, for fix any row or columns, is necessary a area limited for show table.
+To be able to fix table header, footer and columns, it is important to have the table contained in a <code>div</code>, with explicitely set `height` (for fixing header or footer) and `width` (for fixing columns) attributes/css styles. This is very important, since this plugin depends on having the area for the table limited.
 
-#### If fixed cells border is important for you
-If fixed cells border is important for you, is necessary set table cells css `border-collapse: separate`, because for css, when `border-collapse: collapse`, cells border is not possible separate and maintain even position of fixed cells
+#### If fixed cells' border is important for you
+If fixed cells' border is important for you, it is necessary to set table cells' styles to `border-collapse: separate`, because with `border-collapse: collapse` style the cell borders cannot separate and maintain the position of fixed cells.
 
 
 ### Update
-
-#### Version 1.0.1
-* Fixing problems about `some function is not defined` issue on old Firefox.  
+* Fixed problems with `some function is not defined` issue in old Firefox.  

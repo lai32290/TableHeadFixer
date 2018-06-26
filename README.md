@@ -69,3 +69,6 @@ If fixed cells' border is important for you, it is necessary to set table cells'
 
 ### Update
 * Fixed problems with `some function is not defined` issue in old Firefox.  
+
+### Licence
+MIT

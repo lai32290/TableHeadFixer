@@ -226,7 +226,7 @@
                     var cell = $(row).find("> *:nth-child(" + nth + ")");
                     var colspan = cell.prop("colspan");
 
-                    if (cell.cellPos().left < fixColumn) {
+                    if (typeof cell.cellPos() != 'undefined' && cell.cellPos().left < fixColumn) {
                         action(cell);
                     }
 

@@ -16,7 +16,7 @@
 
                 if (settings.head) {
                     if (settings.left > 0) {
-                        var tr = table.find("thead tr");
+                        var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
                             solverLeftColspan(row, function (cell) {
@@ -26,7 +26,7 @@
                     }
 
                     if (settings.right > 0) {
-                        var tr = table.find("thead tr");
+                        var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
                             solveRightColspan(row, function (cell) {
@@ -38,7 +38,7 @@
 
                 if (settings.foot) {
                     if (settings.left > 0) {
-                        var tr = table.find("tfoot tr");
+                        var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
                             solverLeftColspan(row, function (cell) {
@@ -48,7 +48,7 @@
                     }
 
                     if (settings.right > 0) {
-                        var tr = table.find("tfoot tr");
+                        var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
                             solveRightColspan(row, function (cell) {
@@ -80,10 +80,10 @@
                     var left = parent.scrollLeft();
 
                     if (settings.head)
-                        this.find("thead tr > *").css("top", top);
+                        this.find("> thead > tr > *").css("top", top);
 
                     if (settings.foot)
-                        this.find("tfoot tr > *").css("bottom", scrollHeight - clientHeight - top);
+                        this.find("> tfoot > tr > *").css("bottom", scrollHeight - clientHeight - top);
 
                     if (settings.left > 0)
                         settings.leftColumns.css("left", left);
@@ -95,9 +95,9 @@
 
             // Set table head fixed
             function fixHead() {
-                var thead = $(settings.table).find("thead");
-                var tr = thead.find("tr");
-                var cells = thead.find("tr > *");
+                var thead = $(settings.table).find("> thead");
+                var tr = thead.find("> tr");
+                var cells = thead.find("> tr > *");
 
                 setBackground(cells);
                 cells.css({
@@ -107,9 +107,9 @@
 
             // Set table foot fixed
             function fixFoot() {
-                var tfoot = $(settings.table).find("tfoot");
-                var tr = tfoot.find("tr");
-                var cells = tfoot.find("tr > *");
+                var tfoot = $(settings.table).find("> tfoot");
+                var tr = tfoot.find("> tr");
+                var cells = tfoot.find("> tr > *");
 
                 setBackground(cells);
                 cells.css({
@@ -125,7 +125,7 @@
 
                 settings.leftColumns = $();
 
-                var tr = table.find("tr");
+                var tr = table.find("> thead > tr, > tbody > tr, > tfoot > tr");
                 tr.each(function (k, row) {
 
                     solverLeftColspan(row, function (cell) {
@@ -165,8 +165,8 @@
 
                 settings.rightColumns = $();
 
-                var tr_head = table.find('thead').find("tr");
-                var tr_body = table.find('tbody').find("tr");
+                var tr_head = table.find('> thead').find("> tr");
+                var tr_body = table.find('> tbody').find("> tr");
                 var fcell = null;
                 tr_head.each(function (k, row) {
                     solveRightColspanHead(row, function (cell) {

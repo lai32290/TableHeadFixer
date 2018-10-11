@@ -1,6 +1,6 @@
 (function ($) {
 
-  $.fn.tableHeadFixer = function (param) {
+  $.fn.tableFixer = function (param) {
 
     return this.each(function () {
       table.call(this);
@@ -72,10 +72,6 @@
           'position': 'relative', // for cells position computation
         });
 
-        var left_top_position = table.position();
-        left_top_position.left += parseInt(table.css('margin-left'), 10);
-        left_top_position.top += parseInt(table.css('margin-top'), 10);
-
         parent.on('scroll', $.proxy(function () {
           var scrollWidth = parent[0].scrollWidth;
           var clientWidth = parent[0].clientWidth;
@@ -83,23 +79,31 @@
           var clientHeight = parent[0].clientHeight;
           var scroll_top = parent.scrollTop();
           var scroll_left = parent.scrollLeft();
+          var table_position = {
+            left: table[0].offsetLeft + parseInt(table.css('margin-left'), 10),
+            top: table[0].offsetTop + parseInt(table.css('margin-top'), 10),
+          };
+          table_position.right = scrollWidth - table_position.left - table.width();
+          table_position.bottom = scrollHeight - table_position.top - table.height();
 
           if (settings.head) {
-            var top = scroll_top - left_top_position.top;
+            var top = scroll_top - table_position.top;
             this.find("> thead > tr > *").css("top", top < 0 ? 0 : top);
           }
 
           if (settings.foot) {
-            this.find("> tfoot > tr > *").css("bottom", scrollHeight - clientHeight - scroll_top);
+            var bottom = scrollHeight - clientHeight - scroll_top - table_position.bottom;
+            this.find("> tfoot > tr > *").css("bottom", bottom < 0 ? 0 : bottom);
           }
 
           if (settings.left > 0) {
-            var left = scroll_left - left_top_position.left;
+            var left = scroll_left - table_position.left;
             settings.leftColumns.css("left", left < 0 ? 0 : left);
           }
 
           if (settings.right > 0) {
-            settings.rightColumns.css("right", scrollWidth - clientWidth - scroll_left);
+            var right = scrollWidth - clientWidth - scroll_left - table_position.right;
+            settings.rightColumns.css("right", right < 0 ? 0 : right);
           }
         }, table));
       }

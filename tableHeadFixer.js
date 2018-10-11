@@ -29,7 +29,7 @@
                         var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
-                            solveRightColspan(row, function (cell) {
+                            solveRightColspanHead(row, function (cell) {
                                 $(cell).css("z-index", settings['z-index'] + 1);
                             });
                         });
@@ -51,7 +51,7 @@
                         var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
-                            solveRightColspan(row, function (cell) {
+                            solveRightColspanHead(row, function (cell) {
                                 $(cell).css("z-index", settings['z-index']);
                             });
                         });

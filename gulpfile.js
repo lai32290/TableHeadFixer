@@ -3,7 +3,7 @@ var watch = require("gulp-watch");
 var livereload = require("gulp-livereload");
 
 var watchFiles = [
-	"tableHeadFixer.js",
+	"table-fixer.jquery.js",
 	"examples/*.html"
 ];
 

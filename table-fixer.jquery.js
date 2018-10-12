@@ -80,8 +80,8 @@
           var scroll_top = parent.scrollTop();
           var scroll_left = parent.scrollLeft();
           var table_position = {
-            left: table[0].offsetLeft + parseInt(table.css('margin-left'), 10),
-            top: table[0].offsetTop + parseInt(table.css('margin-top'), 10),
+            left: table[0].offsetLeft,
+            top: table[0].offsetTop,
           };
           table_position.right = scrollWidth - table_position.left - table.width();
           table_position.bottom = scrollHeight - table_position.top - table.height();

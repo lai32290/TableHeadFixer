@@ -1,24 +1,24 @@
 {
-  "name": "TableHeadFixer",
-  "version": "1.0.1",
-  "description": "",
-  "main": "helloFixHeader.js",
+  "name": "jquery-table-fixer",
+  "version": "1.1",
+  "description": "Plugin for fixing HTML table header, footer and columns",
+  "main": "table-fixer.jquery.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lai32290/HelloTableFixHeader.git"
+    "url": "https://github.com/DrankUser/TableFixer.git"
   },
-  "author": "",
+  "author": "Roman Mitasov (DrankUser)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lai32290/HelloTableFixHeader/issues"
+    "url": "https://github.com/DrankUser/TableFixer/issues"
   },
-  "homepage": "https://github.com/lai32290/HelloTableFixHeader",
+  "homepage": "https://github.com/DrankUser/TableFixer",
   "dependencies": {
-    "gulp": "^3.8.11",
-    "gulp-livereload": "^3.8.0",
-    "gulp-watch": "^4.2.4"
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-watch": "^4.3.11"
   }
 }

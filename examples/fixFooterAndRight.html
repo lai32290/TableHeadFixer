@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script src="../assets/jquery-2.1.3.js"></script>
-		<script src="../tableHeadFixer.js"></script>
+		<script src="../table-fixer.jquery.js"></script>
 		<link rel="stylesheet" href="../assets/bootstrap-3.3.2/css/bootstrap.css">
 		<style>
 			#parent {
@@ -15,13 +15,13 @@
 
 		<script>
 			$(document).ready(function() {
-				$("#fixTable").tableHeadFixer({'right' : 1, 'foot' : true, 'head' : false}); 
+				$("#fixTable").tableFixer({'right' : 1, 'foot' : true, 'head' : false}); 
 			});
 		</script>
 	</head>
 
 	<body>
-		<h2>TableHeadFixer Fix Footer and Right</h2>
+		<h2>TableFixer Fix Footer and Right</h2>
 
 		<div id="parent">
 			<table id="fixTable" class="table">

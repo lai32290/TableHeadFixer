@@ -29,7 +29,7 @@
                         var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
-                            solveRightColspan(row, function (cell) {
+                            solveRightColspanHead(row, function (cell) {
                                 $(cell).css("z-index", settings['z-index'] + 1);
                             });
                         });
@@ -51,7 +51,7 @@
                         var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
-                            solveRightColspan(row, function (cell) {
+                            solveRightColspanHead(row, function (cell) {
                                 $(cell).css("z-index", settings['z-index']);
                             });
                         });
@@ -170,7 +170,7 @@
                 var fcell = null;
                 tr_head.each(function (k, row) {
                     solveRightColspanHead(row, function (cell) {
-                        if (k === 0) {
+                        if (k < tr_head.length) {
                             fcell = cell;
                         }
                         settings.rightColumns = settings.rightColumns.add(fcell);
@@ -190,8 +190,7 @@
 
                     setBackground(cell);
                     cell.css({
-                        'position': 'relative',
-                        'z-index': '9999'
+                        'position': 'relative'
                     });
                 });
 
